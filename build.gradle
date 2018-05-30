@@ -1,0 +1,35 @@
+plugins {
+    id 'com.github.samueltbrown.cucumber' version '0.9'
+}
+
+    apply plugin: 'java'
+apply plugin: 'com.github.samueltbrown.cucumber'
+
+sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+    compileJava {
+        options.encoding = 'UTF-8'
+    }
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+ext.cucumberVersion = '2.4.0'
+
+
+dependencies {
+    testCompile('junit:junit:4.12')
+
+    testCompile "io.cucumber:cucumber-java:${cucumberVersion}"
+    testCompile "io.cucumber:cucumber-junit:${cucumberVersion}"
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.7'
+}
+
